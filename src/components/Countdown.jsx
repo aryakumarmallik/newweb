@@ -1,0 +1,5 @@
+import {useEffect,useState} from 'react';import {EVENT_DATE} from '../config';
+const calc=()=>{const d=Math.max(0,new Date(EVENT_DATE)-Date.now());return[['Days',d/864e5],['Hours',d/36e5%24],['Minutes',d/6e4%60],['Seconds',d/1e3%60]].map(([l,v])=>[l,String(Math.floor(v)).padStart(2,'0')])};
+export default function Countdown(){const[t,setT]=useState(calc);useEffect(()=>{const i=setInterval(()=>setT(calc()),1000);return()=>clearInterval(i)},[]);
+return(<section className="py-16 bg-ink2 border-y border-white/10"><div className="max-w-5xl mx-auto px-5 text-center"><h2 className="text-2xl font-bold mb-8">The festival starts in</h2>
+<div className="grid grid-cols-4 gap-3 sm:gap-8">{t.map(([l,v],i)=><div key={l} className="glass py-5 sm:py-8" style={{borderTop:`3px solid ${['#4285F4','#EA4335','#FBBC05','#34A853'][i]}`}}><div className="text-3xl sm:text-6xl font-display font-bold tabular-nums">{v}</div><div className="text-xs sm:text-sm text-muted mt-2">{l}</div></div>)}</div></div></section>)}

@@ -1,0 +1,8 @@
+import {useEffect,useRef,useState} from 'react';import {animate,useInView} from 'framer-motion';import {Reveal,Head} from './ui';
+const stats=[[1500,'+','Attendees','gblue'],[40,'+','Speakers & mentors','gred'],[24,'h','Non-stop hackathon','gyellow'],[30,'+','Workshops','ggreen']];
+function Num({to,suf}){const r=useRef(),v=useInView(r,{once:true}),[n,setN]=useState(0);useEffect(()=>{if(v)animate(0,to,{duration:1.8,onUpdate:x=>setN(Math.round(x))})},[v,to]);return<span ref={r}>{n}{suf}</span>}
+export default function About(){return(<section id="about" className="py-28"><div className="max-w-7xl mx-auto px-5 grid lg:grid-cols-5 gap-12 items-center">
+<div className="lg:col-span-3"><Head title="A festival built by developers, for developers" sub="GDG Tech Fest brings students, professionals and makers into one room for hands-on learning and honest conversation."/>
+<Reveal><p className="text-muted leading-relaxed max-w-xl">Google Developer Groups are local communities that learn Google technologies together. This festival is our biggest meetup of the year: talks on web, AI, cloud and Android, a flagship hackathon, and plenty of time to collaborate with people who build for a living.</p>
+<div className="flex gap-3 mt-6 flex-wrap text-sm">{['Technology','Innovation','Collaboration'].map(t=><span key={t} className="border border-white/20 px-4 py-1.5">{t}</span>)}</div></Reveal></div>
+<div className="lg:col-span-2 grid grid-cols-2 border border-white/10">{stats.map(([n,s,l,c],i)=><div key={l} className={`p-7 ${i%2?'border-l':''} ${i>1?'border-t':''} border-white/10`}><div className={`text-4xl font-display font-bold text-${c}`}><Num to={n} suf={s}/></div><p className="text-sm text-muted mt-1">{l}</p></div>)}</div></div></section>)}

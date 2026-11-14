@@ -1,0 +1,4 @@
+import {Head} from './ui';
+const g=[['workshop','Workshops','col-span-2 row-span-2'],['hackathon','Hackathon moments',''],['community','Community',''],['stage','Previous highlights','col-span-2'],['coding','Late-night builds','']];
+export default function Gallery(){return(<section className="py-28"><div className="max-w-7xl mx-auto px-5"><Head title="Previous editions" sub="Placeholder photos from picsum.photos."/>
+<div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] gap-3">{g.map(([s,c,sp])=><figure key={s} className={`relative overflow-hidden group ${sp}`}><img loading="lazy" src={`https://picsum.photos/seed/${s}/800/600`} alt={c} className="w-full h-full object-cover transition duration-700 group-hover:scale-110"/><figcaption className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-ink/90 text-sm">{c}</figcaption></figure>)}</div></div></section>)}

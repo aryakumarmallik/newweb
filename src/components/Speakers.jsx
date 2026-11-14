@@ -1,0 +1,6 @@
+import {Linkedin,Twitter,Github} from 'lucide-react';import {Reveal,Head} from './ui';
+const sp=[['Speaker Name 1','Senior Engineer','Company Name','gblue'],['Speaker Name 2','Developer Advocate','Organization','gred'],['Speaker Name 3','ML Researcher','Company Name','gyellow'],['Speaker Name 4','Design Lead','Organization','ggreen']];
+export default function Speakers(){return(<section id="speakers" className="py-28 bg-ink2"><div className="max-w-7xl mx-auto px-5"><Head title="Speakers" sub="Placeholder profiles. Replace with confirmed speakers."/>
+<div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">{sp.map(([n,d,o,c],i)=><Reveal key={n} delay={i*.08} className={i%2?'lg:mt-12':''}><div className="group glass overflow-hidden">
+<div className={`h-56 grid place-items-center bg-gradient-to-br from-${c}/40 to-ink relative`}><div className="w-24 h-24 rounded-full border-2 border-white/30 bg-white/10 grid place-items-center font-display text-3xl">{n.slice(-1)}</div></div>
+<div className="p-5"><h3 className="font-bold">{n}</h3><p className="text-sm text-muted">{d}, {o}</p><div className="flex gap-3 mt-4 text-muted">{[Linkedin,Twitter,Github].map((I,j)=><a key={j} href="#speakers" aria-label="social" className="hover:text-white"><I size={18}/></a>)}</div></div></div></Reveal>)}</div></div></section>)}
